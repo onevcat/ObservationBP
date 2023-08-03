@@ -1,0 +1,21 @@
+//===----------------------------------------------------------------------===//
+//
+// This source file is part of the Swift.org open source project
+//
+// Copyright (c) 2023 Apple Inc. and the Swift project authors
+// Licensed under Apache License v2.0 with Runtime Library Exception
+//
+// See https://swift.org/LICENSE.txt for license information
+//
+//===----------------------------------------------------------------------===//
+
+
+/// A type that emits notifications to observers when underlying data changes.
+///
+/// Conforming to this protocol signals to other APIs that the type supports
+/// observation. However, applying the `Observable` protocol by itself to a
+/// type doesn't add observation functionality to the type. Instead, always use
+/// the ``Observation/Observable()`` macro when adding observation
+/// support to a type.
+public protocol Observable { }
+
