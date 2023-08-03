@@ -8,7 +8,7 @@
 import XCTest
 @testable import ObservationBP
 
-final class Person: Observable {
+fileprivate final class Person: Observable {
     init() {
     }
 
@@ -42,18 +42,7 @@ final class Person: Observable {
     var _registrar = ObservationRegistrar()
 }
 
-let sample = Person()
-
-@Observable class P {
-    internal init(hello: String, world: Int) {
-        self.hello = hello
-        self.world = world
-    }
-    
-    var hello: String
-    var world: Int
-    
-}
+private let sample = Person()
 
 final class MyObservationTests: XCTestCase {
     var numberOfCalls = 0
