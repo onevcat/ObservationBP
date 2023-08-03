@@ -32,7 +32,7 @@ Results in:
 
 ![](https://github.com/onevcat/ObservationBP/assets/1019875/9f3e4c46-ef2e-4c93-b732-33599ddb5f55)
 
-#### Access Tracking
+#### Observation Tracking
 
 ```swift
 let p = Person(name: "Tom", age: 12)
@@ -54,3 +54,5 @@ print("'Changed' is printed")
 ```
 
 #### SwiftUI
+
+TBD.
