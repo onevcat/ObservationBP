@@ -18,6 +18,7 @@
 		D146F6832A7BD5B00028B851 /* ThreadLocal.swift in Sources */ = {isa = PBXBuildFile; fileRef = D146F67C2A7BD5B00028B851 /* ThreadLocal.swift */; };
 		D146F6842A7BD5B00028B851 /* Locking.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D146F67D2A7BD5B00028B851 /* Locking.cpp */; };
 		D146F6852A7BD5B00028B851 /* ObservationTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = D146F67E2A7BD5B00028B851 /* ObservationTracking.swift */; };
+		D15072332A7BEAF2005ABD67 /* ObservationBPMacros in Frameworks */ = {isa = PBXBuildFile; productRef = D15072322A7BEAF2005ABD67 /* ObservationBPMacros */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +44,7 @@
 		D146F67C2A7BD5B00028B851 /* ThreadLocal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThreadLocal.swift; sourceTree = "<group>"; };
 		D146F67D2A7BD5B00028B851 /* Locking.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Locking.cpp; sourceTree = "<group>"; };
 		D146F67E2A7BD5B00028B851 /* ObservationTracking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObservationTracking.swift; sourceTree = "<group>"; };
+		D146F68D2A7BEAA60028B851 /* ObservationBPMacros */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = ObservationBPMacros; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,6 +52,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D15072332A7BEAF2005ABD67 /* ObservationBPMacros in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -67,9 +70,11 @@
 		D146F6542A7BD4D50028B851 = {
 			isa = PBXGroup;
 			children = (
+				D146F68D2A7BEAA60028B851 /* ObservationBPMacros */,
 				D146F6602A7BD4D50028B851 /* ObservationBP */,
 				D146F66C2A7BD4D60028B851 /* ObservationBPTests */,
 				D146F65F2A7BD4D50028B851 /* Products */,
+				D146F6872A7BE8680028B851 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -106,6 +111,13 @@
 			path = ObservationBPTests;
 			sourceTree = "<group>";
 		};
+		D146F6872A7BE8680028B851 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -134,6 +146,9 @@
 			dependencies = (
 			);
 			name = ObservationBP;
+			packageProductDependencies = (
+				D15072322A7BEAF2005ABD67 /* ObservationBPMacros */,
+			);
 			productName = ObservationBP;
 			productReference = D146F65E2A7BD4D50028B851 /* ObservationBP.framework */;
 			productType = "com.apple.product-type.framework";
@@ -152,6 +167,8 @@
 				D146F66B2A7BD4D60028B851 /* PBXTargetDependency */,
 			);
 			name = ObservationBPTests;
+			packageProductDependencies = (
+			);
 			productName = ObservationBPTests;
 			productReference = D146F6682A7BD4D60028B851 /* ObservationBPTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -184,6 +201,8 @@
 				Base,
 			);
 			mainGroup = D146F6542A7BD4D50028B851;
+			packageReferences = (
+			);
 			productRefGroup = D146F65F2A7BD4D50028B851 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -393,6 +412,7 @@
 				MARKETING_VERSION = 1.0;
 				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
 				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu17 gnu++20";
+				OTHER_SWIFT_FLAGS = "-Xfrontend -enable-experimental-feature -Xfrontend Macros -Xfrontend -load-plugin-library";
 				PRODUCT_BUNDLE_IDENTIFIER = com.onevcat.ObservationBP;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -425,6 +445,7 @@
 				MARKETING_VERSION = 1.0;
 				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
 				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu17 gnu++20";
+				OTHER_SWIFT_FLAGS = "-Xfrontend -enable-experimental-feature -Xfrontend Macros -Xfrontend -load-plugin-library";
 				PRODUCT_BUNDLE_IDENTIFIER = com.onevcat.ObservationBP;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -442,6 +463,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
+				OTHER_SWIFT_FLAGS = "-Xfrontend -load-plugin-library";
 				PRODUCT_BUNDLE_IDENTIFIER = com.onevcat.ObservationBPTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
@@ -458,6 +480,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
+				OTHER_SWIFT_FLAGS = "-Xfrontend -load-plugin-library";
 				PRODUCT_BUNDLE_IDENTIFIER = com.onevcat.ObservationBPTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
@@ -497,6 +520,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D15072322A7BEAF2005ABD67 /* ObservationBPMacros */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ObservationBPMacros;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = D146F6552A7BD4D50028B851 /* Project object */;
 }

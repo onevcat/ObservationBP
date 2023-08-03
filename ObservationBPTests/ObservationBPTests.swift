@@ -44,6 +44,17 @@ final class Person: Observable {
 
 let sample = Person()
 
+@Observable class P {
+    internal init(hello: String, world: Int) {
+        self.hello = hello
+        self.world = world
+    }
+    
+    var hello: String
+    var world: Int
+    
+}
+
 final class MyObservationTests: XCTestCase {
     var numberOfCalls = 0
     func testObservation() throws {

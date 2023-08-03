@@ -1,20 +1,12 @@
 //
 //  Locking.cpp
-//  MyObservation
+//  ObservationBP
 //
 //  Created by Wei Wang on 2023/08/03.
 //
 
-#include <stdio.h>
-#include <pthread.h>
-#include <errno.h>
-#include <chrono>
-#ifndef SWIFT_THREADING_IMPL_CHRONO_UTILS_H
-#define SWIFT_THREADING_IMPL_CHRONO_UTILS_H
-#include <cstdlib>
 #include <cstdarg>
 #include <chrono>
-#include <type_traits>
 
 namespace swift {
 namespace threading {
@@ -39,8 +31,6 @@ using std::chrono::ceil;
 } // namespace chrono_utils
 } // namespace threading_impl
 } // namespace swift
-
-#endif // SWIFT_THREADING_IMPL_CHRONO_UTILS_H
 
 namespace threading_impl {
 
@@ -76,8 +66,6 @@ bool thread_is_main();
 inline bool threads_same(thread_id a, thread_id b) {
   return ::pthread_equal(a, b);
 }
-
-//llvm::Optional<stack_bounds> thread_get_current_stack_bounds();
 
 // .. Mutex support ..........................................................
 
@@ -208,10 +196,6 @@ inline void once_impl(once_t &predicate, void (*fn)(void *), void *context) {
 }
 
 // .. Thread local storage ...................................................
-
-#if __cplusplus >= 201103L || __has_feature(cxx_thread_local)
-#define SWIFT_THREAD_LOCAL thread_local
-#endif
 
 using tls_key_t = pthread_key_t;
 using tls_dtor_t = void (*)(void *);
