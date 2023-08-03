@@ -11,52 +11,31 @@
 #include <chrono>
 #ifndef SWIFT_THREADING_IMPL_CHRONO_UTILS_H
 #define SWIFT_THREADING_IMPL_CHRONO_UTILS_H
-
+#include <cstdlib>
+#include <cstdarg>
 #include <chrono>
 #include <type_traits>
 
 namespace swift {
+namespace threading {
+
+void fatal(const char *msg, ...) {
+  std::va_list val;
+
+  va_start(val, msg);
+  std::vfprintf(stderr, msg, val);
+  va_end(val);
+
+  std::abort();
+}
+
+} // namespace threading
+} // namespace swift
+
+namespace swift {
 namespace threading_impl {
 namespace chrono_utils {
-
-#if __cplusplus >= 201703L
 using std::chrono::ceil;
-#else
-
-namespace detail {
-template <class _Tp>
-struct is_duration : std::false_type {};
-
-template <class _Rep, class _Period>
-struct is_duration<std::chrono::duration<_Rep, _Period> >
-  : std::true_type  {};
-
-template <class _Rep, class _Period>
-struct is_duration<const std::chrono::duration<_Rep, _Period> >
-  : std::true_type  {};
-
-template <class _Rep, class _Period>
-struct is_duration<volatile std::chrono::duration<_Rep, _Period> >
-  : std::true_type  {};
-
-template <class _Rep, class _Period>
-struct is_duration<const volatile std::chrono::duration<_Rep, _Period> >
-  : std::true_type  {};
-}
-
-template <class To, class Rep, class Period,
-          class = std::enable_if_t<detail::is_duration<To>::value>>
-constexpr To
-ceil(const std::chrono::duration<Rep, Period>& d)
-{
-  To t = std::chrono::duration_cast<To>(d);
-  if (t < d)
-    t = t + To{1};
-  return t;
-}
-
-#endif
-
 } // namespace chrono_utils
 } // namespace threading_impl
 } // namespace swift
@@ -69,7 +48,7 @@ namespace threading_impl {
   do {                                                                         \
     int res_ = (expr);                                                         \
     if (res_ != 0)                                                             \
-break;          \
+      swift::threading::fatal(#expr " failed with error %d\n", res_);          \
   } while (0)
 
 #define SWIFT_PTHREADS_RETURN_TRUE_OR_FALSE(falseerr, expr)                    \
@@ -81,6 +60,7 @@ break;          \
     case falseerr:                                                             \
       return false;                                                            \
     default:                                                                   \
+      swift::threading::fatal(#expr " failed with error (%d)\n", res_);        \
       return false;                                                            \
     }                                                                          \
   } while (0)
