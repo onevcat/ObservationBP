@@ -15,6 +15,7 @@
 		D172803A2A7C010900CDC50B /* ObservationBPSwiftUIDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17280392A7C010900CDC50B /* ObservationBPSwiftUIDemoUITests.swift */; };
 		D172803C2A7C010900CDC50B /* ObservationBPSwiftUIDemoUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D172803B2A7C010900CDC50B /* ObservationBPSwiftUIDemoUITestsLaunchTests.swift */; };
 		D1B14B632A7C0169000F280F /* ObservationBP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1B14B622A7C0169000F280F /* ObservationBP.framework */; };
+		D1C58B7F2A7C8D2C00B8E567 /* PerformanceComparingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C58B7E2A7C8D2C00B8E567 /* PerformanceComparingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,7 @@
 		D17280392A7C010900CDC50B /* ObservationBPSwiftUIDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservationBPSwiftUIDemoUITests.swift; sourceTree = "<group>"; };
 		D172803B2A7C010900CDC50B /* ObservationBPSwiftUIDemoUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservationBPSwiftUIDemoUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		D1B14B622A7C0169000F280F /* ObservationBP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ObservationBP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D1C58B7E2A7C8D2C00B8E567 /* PerformanceComparingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformanceComparingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 			children = (
 				D172801E2A7C010700CDC50B /* ObservationBPSwiftUIDemoApp.swift */,
 				D17280202A7C010700CDC50B /* ContentView.swift */,
+				D1C58B7E2A7C8D2C00B8E567 /* PerformanceComparingView.swift */,
 				D17280222A7C010900CDC50B /* Assets.xcassets */,
 				D17280242A7C010900CDC50B /* Preview Content */,
 			);
@@ -271,6 +274,7 @@
 			files = (
 				D17280212A7C010700CDC50B /* ContentView.swift in Sources */,
 				D172801F2A7C010700CDC50B /* ObservationBPSwiftUIDemoApp.swift in Sources */,
+				D1C58B7F2A7C8D2C00B8E567 /* PerformanceComparingView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
