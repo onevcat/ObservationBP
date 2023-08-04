@@ -20,6 +20,7 @@
 		D146F6852A7BD5B00028B851 /* ObservationTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = D146F67E2A7BD5B00028B851 /* ObservationTracking.swift */; };
 		D15072332A7BEAF2005ABD67 /* ObservationBPMacros in Frameworks */ = {isa = PBXBuildFile; productRef = D15072322A7BEAF2005ABD67 /* ObservationBPMacros */; };
 		D172800E2A7BF35200CDC50B /* ObservationBPMarcoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D172800D2A7BF35200CDC50B /* ObservationBPMarcoTests.swift */; };
+		D17280112A7BFFE500CDC50B /* ObservationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17280102A7BFFE500CDC50B /* ObservationView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		D146F67E2A7BD5B00028B851 /* ObservationTracking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObservationTracking.swift; sourceTree = "<group>"; };
 		D146F68D2A7BEAA60028B851 /* ObservationBPMacros */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = ObservationBPMacros; sourceTree = "<group>"; };
 		D172800D2A7BF35200CDC50B /* ObservationBPMarcoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservationBPMarcoTests.swift; sourceTree = "<group>"; };
+		D17280102A7BFFE500CDC50B /* ObservationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +94,7 @@
 		D146F6602A7BD4D50028B851 /* ObservationBP */ = {
 			isa = PBXGroup;
 			children = (
+				D172800F2A7BFF9000CDC50B /* SwiftUI */,
 				D146F67D2A7BD5B00028B851 /* Locking.cpp */,
 				D146F67B2A7BD5B00028B851 /* Locking.swift */,
 				D146F6782A7BD5B00028B851 /* Observable.swift */,
@@ -119,6 +122,14 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D172800F2A7BFF9000CDC50B /* SwiftUI */ = {
+			isa = PBXGroup;
+			children = (
+				D17280102A7BFFE500CDC50B /* ObservationView.swift */,
+			);
+			path = SwiftUI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -245,6 +256,7 @@
 				D146F6632A7BD4D50028B851 /* ObservationBP.docc in Sources */,
 				D146F6832A7BD5B00028B851 /* ThreadLocal.swift in Sources */,
 				D146F6812A7BD5B00028B851 /* ThreadLocal.cpp in Sources */,
+				D17280112A7BFFE500CDC50B /* ObservationView.swift in Sources */,
 				D146F6822A7BD5B00028B851 /* Locking.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
