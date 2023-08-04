@@ -80,5 +80,7 @@ struct ContentView: View {
 
 ### Switching to Official Observation Framework
 
+When you can set iOS 17 or later as your deploy target, you can switch back to the official framework.
+
 1. Instead of importing `ObservationBP`, change to `import Observation`.
-2. Add `typealias ObservationView = Group` to allow the project building. Then remove all `ObservationView`.
+2. Add `typealias ObservationView = Group` to allow the project building. Then remove all `ObservationView` eventually.
