@@ -195,12 +195,216 @@ class RecursiveOuter {
 
 
 final class ObservationBPTests: XCTestCase {
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
+    func testOnlyInstantiate() throws {
+        let test = MiddleNamePerson()
     }
+    
+    
+    func testUnobservedValueChanges() throws {
+      let test = MiddleNamePerson()
+      for i in 0..<100 {
+        test.firstName = "\(i)"
+      }
+    }
+    
+    func testTrackingChanges() throws {
+      let changed = CapturedState(state: false)
+      
+      let test = MiddleNamePerson()
+      withObservationTracking {
+        _blackHole(test.firstName)
+      } onChange: {
+        changed.state = true
+      }
+      
+      test.firstName = "c"
+      XCTAssertEqual(changed.state, true)
+      changed.state = false
+      test.firstName = "c"
+      XCTAssertEqual(changed.state, false)
+    }
+
+    func testConformance() throws {
+      func testConformance<O: Observable>(_ o: O) -> Bool {
+        return true
+      }
+      
+      func testConformance<O>(_ o: O) -> Bool {
+        return false
+      }
+      
+      let test = Person()
+      XCTAssertEqual(testConformance(test), true)
+    }
+    
+    func testTrackingNonChanged() throws {
+      let changed = CapturedState(state: false)
+      
+      let test = MiddleNamePerson()
+      withObservationTracking {
+        _blackHole(test.lastName)
+      } onChange: {
+        changed.state = true
+      }
+      
+      test.firstName = "c"
+      XCTAssertEqual(changed.state, false)
+    }
+    
+    func testTrackingComputed() throws {
+      let changed = CapturedState(state: false)
+      
+      let test = MiddleNamePerson()
+      withObservationTracking {
+        _blackHole(test.fullName)
+      } onChange: {
+        changed.state = true
+      }
+      
+      test.middleName = "c"
+      XCTAssertEqual(changed.state, true)
+      changed.state = false
+      test.middleName = "c"
+      XCTAssertEqual(changed.state, false)
+    }
+    
+    func testGraphChanges() throws {
+      let changed = CapturedState(state: false)
+      
+      let test = MiddleNamePerson()
+      let friend = MiddleNamePerson()
+      test.friends.append(friend)
+      withObservationTracking {
+        _blackHole(test.friends.first?.fullName)
+      } onChange: {
+        changed.state = true
+      }
+
+      test.middleName = "c"
+      XCTAssertEqual(changed.state, false)
+      friend.middleName = "c"
+      XCTAssertEqual(changed.state, true)
+    }
+    
+    func testNesting() throws {
+      let changedOuter = CapturedState(state: false)
+      let changedInner = CapturedState(state: false)
+      
+      let test = MiddleNamePerson()
+      withObservationTracking {
+        withObservationTracking {
+          _blackHole(test.firstName)
+        } onChange: {
+          changedInner.state = true
+        }
+      } onChange: {
+        changedOuter.state = true
+      }
+      
+      test.firstName = "c"
+      XCTAssertEqual(changedInner.state, true)
+      XCTAssertEqual(changedOuter.state, true)
+      changedOuter.state = false
+      test.firstName = "c"
+      XCTAssertEqual(changedOuter.state, false)
+    }
+    
+    func testAccessAndMutation() throws {
+      let accessKeyPath = CapturedState<PartialKeyPath<ImplementsAccessAndMutation>?>(state: nil)
+      let mutationKeyPath = CapturedState<PartialKeyPath<ImplementsAccessAndMutation>?>(state: nil)
+      let test = ImplementsAccessAndMutation { keyPath in
+        accessKeyPath.state = keyPath
+      } withMutationCalled: { keyPath in
+        mutationKeyPath.state = keyPath
+      }
+      
+      XCTAssertEqual(accessKeyPath.state, nil)
+      _blackHole(test.field)
+      XCTAssertEqual(accessKeyPath.state, \.field)
+      XCTAssertEqual(mutationKeyPath.state, nil)
+      accessKeyPath.state = nil
+      test.field = 123
+      XCTAssertEqual(accessKeyPath.state, nil)
+      XCTAssertEqual(mutationKeyPath.state, \.field)
+    }
+    
+    func testIgnoresNoChange() throws {
+      let changed = CapturedState(state: false)
+      
+      let test = HasIgnoredProperty()
+      withObservationTracking {
+        _blackHole(test.ignored)
+      } onChange: {
+        changed.state = true
+      }
+      
+      test.ignored = 122112
+      XCTAssertEqual(changed.state, false)
+      changed.state = false
+      test.field = 3429
+      XCTAssertEqual(changed.state, false)
+    }
+    
+    func testIgnoresChange() throws {
+      let changed = CapturedState(state: false)
+      
+      let test = HasIgnoredProperty()
+      withObservationTracking {
+        _blackHole(test.ignored)
+        _blackHole(test.field)
+      } onChange: {
+        changed.state = true
+      }
+      
+      test.ignored = 122112
+      XCTAssertEqual(changed.state, false)
+      changed.state = false
+      test.field = 3429
+      XCTAssertEqual(changed.state, true)
+    }
+
+    @MainActor func testIsolatedClass() throws {
+      let changed = CapturedState(state: false)
+      
+      let test = IsolatedClass()
+      withObservationTracking {
+        _blackHole(test.test)
+      } onChange: {
+        changed.state = true
+      }
+      
+      test.test = "c"
+      XCTAssertEqual(changed.state, true)
+      changed.state = false
+      test.test = "c"
+      XCTAssertEqual(changed.state, false)
+    }
+
+    func testRecursiveTrackingInnerThenOuter() throws {
+      let obj = RecursiveOuter()
+      obj.recursiveTrackingCalls()
+      obj.inner.value = "test"
+      XCTAssertEqual(obj.innerEventCount, 1)
+      XCTAssertEqual(obj.outerEventCount, 1)
+      obj.recursiveTrackingCalls()
+      obj.value = "test"
+      XCTAssertEqual(obj.innerEventCount, 1)
+      XCTAssertEqual(obj.outerEventCount, 2)
+    }
+
+    func testRecursiveTrackingOuterThenInner() throws {
+      let obj = RecursiveOuter()
+      obj.recursiveTrackingCalls()
+      obj.value = "test"
+      XCTAssertEqual(obj.innerEventCount, 0)
+      XCTAssertEqual(obj.outerEventCount, 1)
+      obj.recursiveTrackingCalls()
+      obj.inner.value = "test"
+      XCTAssertEqual(obj.innerEventCount, 2)
+      XCTAssertEqual(obj.outerEventCount, 2)
+    }
+
+
+
 
 }

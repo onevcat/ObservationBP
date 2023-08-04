@@ -113,8 +113,8 @@
 		D146F66C2A7BD4D60028B851 /* ObservationBPTests */ = {
 			isa = PBXGroup;
 			children = (
-				D146F66D2A7BD4D60028B851 /* ObservationBPBaseTests.swift */,
 				D1C58B802A7C8E8100B8E567 /* ObservationBPTests.swift */,
+				D146F66D2A7BD4D60028B851 /* ObservationBPBaseTests.swift */,
 				D172800D2A7BF35200CDC50B /* ObservationBPMarcoTests.swift */,
 			);
 			path = ObservationBPTests;
