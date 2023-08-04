@@ -18,13 +18,13 @@ Just as the official Observation framework, but importing `ObservationBP`:
 import ObservationBP
 
 @Observable fileprivate class Person {
-    internal init(name: String, age: Int) {
-        self.name = name
-        self.age = age
-    }
+  init(name: String, age: Int) {
+    self.name = name
+    self.age = age
+  }
 
-    var name: String = ""
-    var age: Int = 0
+  var name: String = ""
+  var age: Int = 0
 }
 ```
 
@@ -37,9 +37,9 @@ Results in:
 ```swift
 let p = Person(name: "Tom", age: 12)
 withObservationTracking {
-    _ = p.name
+  _ = p.name
 } onChange: {
-    print("Changed!")
+  print("Changed!")
 }
 
 p.age = 20
@@ -55,4 +55,30 @@ print("'Changed' is printed")
 
 #### SwiftUI
 
-TBD.
+There is no way to make it as transparent as SwiftUI 5.0 does. But you can use it with `ObservationView`:
+
+```swift
+struct ContentView: View {
+
+  private var person = Person(name: "Tom", age: 12)
+
+  var body: some View {
+    ObservationView {
+      VStack {
+        Text(person.name)
+        Text("\(person.age)")
+        HStack {
+          Button("+") { person.age += 1 }
+          Button("-") { person.age -= 1 }
+        }
+      }
+      .padding()
+    }
+  }
+}
+```
+
+### Switching to Official Observation Framework
+
+1. Instead of importing `ObservationBP`, change to `import Observation`.
+2. Add `typealias ObservationView = Group` to allow the project building. Then remove all `ObservationView`.
