@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		D146F6632A7BD4D50028B851 /* ObservationBP.docc in Sources */ = {isa = PBXBuildFile; fileRef = D146F6622A7BD4D50028B851 /* ObservationBP.docc */; };
 		D146F6692A7BD4D60028B851 /* ObservationBP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D146F65E2A7BD4D50028B851 /* ObservationBP.framework */; };
-		D146F66E2A7BD4D60028B851 /* ObservationBPTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D146F66D2A7BD4D60028B851 /* ObservationBPTests.swift */; };
+		D146F66E2A7BD4D60028B851 /* ObservationBPBaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D146F66D2A7BD4D60028B851 /* ObservationBPBaseTests.swift */; };
 		D146F66F2A7BD4D60028B851 /* ObservationBP.h in Headers */ = {isa = PBXBuildFile; fileRef = D146F6612A7BD4D50028B851 /* ObservationBP.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D146F67F2A7BD5B00028B851 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D146F6782A7BD5B00028B851 /* Observable.swift */; };
 		D146F6802A7BD5B00028B851 /* ObservationRegistrar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D146F6792A7BD5B00028B851 /* ObservationRegistrar.swift */; };
@@ -21,6 +21,7 @@
 		D15072332A7BEAF2005ABD67 /* ObservationBPMacros in Frameworks */ = {isa = PBXBuildFile; productRef = D15072322A7BEAF2005ABD67 /* ObservationBPMacros */; };
 		D172800E2A7BF35200CDC50B /* ObservationBPMarcoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D172800D2A7BF35200CDC50B /* ObservationBPMarcoTests.swift */; };
 		D17280112A7BFFE500CDC50B /* ObservationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17280102A7BFFE500CDC50B /* ObservationView.swift */; };
+		D1C58B812A7C8E8100B8E567 /* ObservationBPTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C58B802A7C8E8100B8E567 /* ObservationBPTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,7 +39,7 @@
 		D146F6612A7BD4D50028B851 /* ObservationBP.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ObservationBP.h; sourceTree = "<group>"; };
 		D146F6622A7BD4D50028B851 /* ObservationBP.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = ObservationBP.docc; sourceTree = "<group>"; };
 		D146F6682A7BD4D60028B851 /* ObservationBPTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ObservationBPTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		D146F66D2A7BD4D60028B851 /* ObservationBPTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservationBPTests.swift; sourceTree = "<group>"; };
+		D146F66D2A7BD4D60028B851 /* ObservationBPBaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservationBPBaseTests.swift; sourceTree = "<group>"; };
 		D146F6782A7BD5B00028B851 /* Observable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		D146F6792A7BD5B00028B851 /* ObservationRegistrar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObservationRegistrar.swift; sourceTree = "<group>"; };
 		D146F67A2A7BD5B00028B851 /* ThreadLocal.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ThreadLocal.cpp; sourceTree = "<group>"; };
@@ -49,6 +50,7 @@
 		D146F68D2A7BEAA60028B851 /* ObservationBPMacros */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = ObservationBPMacros; sourceTree = "<group>"; };
 		D172800D2A7BF35200CDC50B /* ObservationBPMarcoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservationBPMarcoTests.swift; sourceTree = "<group>"; };
 		D17280102A7BFFE500CDC50B /* ObservationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservationView.swift; sourceTree = "<group>"; };
+		D1C58B802A7C8E8100B8E567 /* ObservationBPTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservationBPTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,7 +113,8 @@
 		D146F66C2A7BD4D60028B851 /* ObservationBPTests */ = {
 			isa = PBXGroup;
 			children = (
-				D146F66D2A7BD4D60028B851 /* ObservationBPTests.swift */,
+				D146F66D2A7BD4D60028B851 /* ObservationBPBaseTests.swift */,
+				D1C58B802A7C8E8100B8E567 /* ObservationBPTests.swift */,
 				D172800D2A7BF35200CDC50B /* ObservationBPMarcoTests.swift */,
 			);
 			path = ObservationBPTests;
@@ -265,7 +268,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D146F66E2A7BD4D60028B851 /* ObservationBPTests.swift in Sources */,
+				D146F66E2A7BD4D60028B851 /* ObservationBPBaseTests.swift in Sources */,
+				D1C58B812A7C8E8100B8E567 /* ObservationBPTests.swift in Sources */,
 				D172800E2A7BF35200CDC50B /* ObservationBPMarcoTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -428,7 +432,7 @@
 				MARKETING_VERSION = 1.0;
 				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
 				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu17 gnu++20";
-				OTHER_SWIFT_FLAGS = "-Xfrontend -enable-experimental-feature -Xfrontend Macros -Xfrontend -load-plugin-library";
+				OTHER_SWIFT_FLAGS = "-Xfrontend -enable-experimental-feature -Xfrontend Macros -Xfrontend -enable-experimental-feature -Xfrontend ExtensionMacros -Xfrontend -load-plugin-library";
 				PRODUCT_BUNDLE_IDENTIFIER = com.onevcat.ObservationBP;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -461,7 +465,7 @@
 				MARKETING_VERSION = 1.0;
 				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
 				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu17 gnu++20";
-				OTHER_SWIFT_FLAGS = "-Xfrontend -enable-experimental-feature -Xfrontend Macros -Xfrontend -load-plugin-library";
+				OTHER_SWIFT_FLAGS = "-Xfrontend -enable-experimental-feature -Xfrontend Macros -Xfrontend -enable-experimental-feature -Xfrontend ExtensionMacros -Xfrontend -load-plugin-library";
 				PRODUCT_BUNDLE_IDENTIFIER = com.onevcat.ObservationBP;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;

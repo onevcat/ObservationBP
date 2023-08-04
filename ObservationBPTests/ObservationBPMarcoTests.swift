@@ -8,7 +8,7 @@
 import XCTest
 import ObservationBP
 
-@Observable fileprivate class Person {
+@Observable fileprivate class SamplePerson {
     internal init(name: String, age: Int) {
         self.name = name
         self.age = age
@@ -21,7 +21,7 @@ import ObservationBP
 
 final class ObservationBPMarcoTests: XCTestCase {
     func testExample() throws {
-        let p = Person(name: "Tom", age: 12)
+        let p = SamplePerson(name: "Tom", age: 12)
         withObservationTracking {
             _ = p.name
         } onChange: {
