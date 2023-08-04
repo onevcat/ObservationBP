@@ -4,7 +4,7 @@ Proof of Concept for back-porting Observation framework to earlier iOS versions.
 
 The same APIs as the Observation framework are provided but without the limitation of iOS 17. 
 
-Verified on Version 15.0 beta 5 (15A5209g). May break with a future version of Xcode.
+Verified on Xcode 15.0 beta 5 (15A5209g). May break with a future version of Xcode.
 
 Just a toy and only for PoC. Do not use it in your production code (or at your own risk)!
 
