@@ -8,8 +8,6 @@
 import SwiftUI
 import ObservationBP
 
-typealias ObservationView = Group
-
 @Observable final class Person {
     var name: String
     var age: Int
